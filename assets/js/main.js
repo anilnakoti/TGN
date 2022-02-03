@@ -6,7 +6,7 @@
 */
 (function() {
   "use strict";
-
+  document.getElementById("logo_icon").style.display = "none";
   /**
    * Easy selector helper function
    */
@@ -79,11 +79,16 @@
    * Toggle .header-scrolled class to #header when page is scrolled
    */
   let selectHeader = select('#header')
+
   if (selectHeader) {
     const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
+      if (window.scrollY > 50) {
+        document.getElementsByClassName("site-logo-image")[0].style.display = "none";
+        document.getElementsByClassName("site-logo-icon")[0].style.display = "block";
+        selectHeader.classList.add('header-scrolled');
       } else {
+        document.getElementsByClassName("site-logo-icon")[0].style.display = "none";
+        document.getElementsByClassName("site-logo-image")[0].style.display = "block";
         selectHeader.classList.remove('header-scrolled')
       }
     }
@@ -97,7 +102,7 @@
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         backtotop.classList.add('active')
       } else {
         backtotop.classList.remove('active')
